@@ -55,6 +55,7 @@ def plot_attention_weights(model, sample_src, sample_input):
 model = TransformerXXXModel(...)
 ...
 plot_attention_weights(model, ...)
+```
 
 ## 📜 License
 MIT License. © 2025 PengTang
