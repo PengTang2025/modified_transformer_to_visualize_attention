@@ -1,4 +1,5 @@
 # Transformer Attention Visualization
+中文版：[README_cn.md](https://github.com/PengTang2025/transformer_customized/blob/main/README_cn.md)
 
 This project aims to **facilitate the extraction and visualization of attention weights from Transformer models**. To achieve this, two PyTorch-based subclasses were implemented—one for the Encoder layer and one for the Decoder layer—extending their ability to expose internal attention matrices.
 
