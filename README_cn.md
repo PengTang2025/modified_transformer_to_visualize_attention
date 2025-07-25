@@ -23,9 +23,7 @@
 
 ## 🔍 示例
 
-完整代码与训练逻辑可查transformer_copy project
-
-URL:https://github.com/PengTang2025/transformer_copy
+完整代码与训练逻辑可查[transformer_copy project](https://github.com/PengTang2025/transformer_copy)
 
 ```python
 
