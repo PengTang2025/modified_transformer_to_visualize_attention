@@ -24,7 +24,8 @@
 ## 🔍 示例
 
 (详细完整示例可查transformer_copy project)
-URL:
+
+URL:https://github.com/PengTang2025/transformer_copy
 
 ```python
 
