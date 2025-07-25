@@ -23,13 +23,13 @@
 
 ## 🔍 示例
 
-(详细完整示例可查transformer_copy project)
+完整代码与训练逻辑可查transformer_copy project
 
 URL:https://github.com/PengTang2025/transformer_copy
 
 ```python
 
-from coderlayer_with_attn.py import TransformerEncoderLayerWithAttn, TransformerDecoderLayerWithAttn
+from coderlayer_with_attn import TransformerEncoderLayerWithAttn, TransformerDecoderLayerWithAttn
 
 class TransformerXXXModel(nn.Module):
   def __init__(...):
@@ -41,7 +41,7 @@ class TransformerXXXModel(nn.Module):
   self.encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_encoder_layers)
   ...
 
-  def forword(...):
+  def forward(...):
     self.last_attn = self.encoder.layers[-1].attn_weights
     ...
 
@@ -56,4 +56,5 @@ model = TransformerXXXModel(...)
 ...
 plot_attention_weights(model, ...)
 
-
+## 📜 License
+MIT License. © 2025 PengTang
