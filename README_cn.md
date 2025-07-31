@@ -54,6 +54,12 @@ model = TransformerXXXModel(...)
 ...
 plot_attention_weights(model, ...)
 ```
+## ⚠️ 注意事项
+关于 eval() 与 no_grad() 的使用（特别是 Encoder 注意力提取），请特别注意：  
+❗ 若同时启用 with torch.no_grad()和model.eval()，Encoder 的注意力提取将失效！  
+这是由于 PyTorch 在 TransformerEncoderLayer 中启用了稀疏计算路径，会跳过 _sa_block()，导致 self.attn_weights = None。Decoder 层不受此限制（截至 PyTorch 2.7）。
+
+
 
 ## 📜 License
 MIT License. © 2025 PengTang
