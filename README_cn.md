@@ -60,7 +60,7 @@ plot_attention_weights(model, ...)
 ❗ 若同时启用 with torch.no_grad() 和 model.eval()，Encoder 的注意力提取将失效！  
 这是由于 PyTorch 在 TransformerEncoderLayer 中启用了稀疏计算路径，当符合条件时会直接return torch._transformer_encoder_layer_fwd() 结束 forward(), 跳过后续的 _sa_block() 调用，导致 self.attn_weights = None。（详见 why_not_sparsity_fast_path 变量的一系列逻辑，它是 PyTorch Transformer 模块内部用于控制是否使用稀疏计算路径的标志，在 forward() 函数的最前端）  
 TransformerDecoderLayer 无稀疏计算路径，不受此限制。
-当with torch.no_grad() 和 model.eval()只能选其一时，鉴于我们更希望在测试与绘图中不使用dropout/batchnorm，建议在使用时先执行模型的测试与保存逻辑，再在 eval() 模式下进行注意力可视化绘图。
+当with torch.no_grad() 和 model.eval()只能选其一时，鉴于我们更希望在测试与绘图中不使用dropout/batchnorm，建议在使用时先完成最终模型的保存，确保可视化使用的数据不再更新模型，再在 eval() 模式下进行注意力可视化绘图。
 
 
 ## 📜 License
