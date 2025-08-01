@@ -24,7 +24,7 @@ This allows direct access to per-layer attention matrices via `.attn_weights`.
 
 ## 🔍 Example
 
-Full code and training logic can be found in the [transformer_copy project](https://github.com/PengTang2025/transformer_copy)
+Full code and training logic can be found in the [transformer_copy project](https://github.com/PengTang2025/transformer_copy) and [transformer seq2seq with piglatin](https://github.com/PengTang2025/TransformerSeq2Seq-CopyTask-with-AttentionVis-CustomPigLatin)
 
 ```python
 from coderlayer_with_attn import TransformerEncoderLayerWithAttn, TransformerDecoderLayerWithAttn
