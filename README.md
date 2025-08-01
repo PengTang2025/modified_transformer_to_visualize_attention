@@ -51,8 +51,27 @@ def plot_attention_weights(model, sample_src, sample_input):
 # Training
 model = TransformerXXXModel(...)
 ...
+model.eval() # do not use model.eval() and with torch.no_grad() at the same time, the reason is explained in Important Note
 plot_attention_weights(model, ...)
 ```
+## ⚠️ Important Note: Attention Extraction from the Encoder (PyTorch 2.7)
+  
+❗ If you enable both `model.eval()` and `with torch.no_grad()` **at the same time**, attention extraction from the Encoder will **fail**!  
+  
+This happens because PyTorch introduces **a sparse computation** path in `TransformerEncoderLayer`. When certain conditions are met (e.g., inference mode, specific shapes, no gradient tracking), the forward method will **directly return** via `torch._transformer_encoder_layer_fwd()`, skipping the`_sa_block()` logic where attention weights (self.attn_weights) would have been saved.  
+  
+This behavior is controlled by the internal flag `why_not_sparsity_fast_path`, which determines whether the sparse path is allowed. This check happens **at the very beginning** of the `forward()` function, before any of your custom logic runs.  
+  
+In contrast, `TransformerDecoderLayer` does not use this sparse computation path and is not affected by this issue.    
+  
+✅ Recommendation:  
+Since we usually want dropout and batchnorm to be disabled during testing and visualization, it is recommended to:  
+- First, run your model training and save the final model. This ensures that the data used for visualization will not cause further updates to the model.  
+- Then, visualize attention using **only** `model.eval()`, without wrapping the forward pass in `torch.no_grad()`.  
+  
+This ensures that attention weights are properly recorded for visualization purposes.  
+  
+💡 Memory impact is negligible as attention visualization uses small inputs and no backpropagation is involved.  
 
 ## 📜 License
 MIT License. © 2025 PengTang
