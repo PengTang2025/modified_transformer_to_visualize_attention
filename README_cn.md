@@ -23,7 +23,7 @@
 
 ## 🔍 示例
 
-完整代码与训练逻辑可查[transformer_copy project](https://github.com/PengTang2025/transformer_copy)
+完整代码与训练逻辑可查[transformer_copy project](https://github.com/PengTang2025/transformer_copy) 和 [transformer seq2seq with piglatin](https://github.com/PengTang2025/TransformerSeq2Seq-CopyTask-with-AttentionVis-CustomPigLatin)
 
 ```python
 
